@@ -59,7 +59,7 @@ def ask_question(request):
     vectorstore = FAISS.load_local("rag_app/vectorstore", embeddings)
     retriever = vectorstore.as_retriever()
 
-    llm = Ollama(model="llama3")  # Make sure this model is pulled
+    llm = Ollama(model="tinyllama")  # Make sure this model is pulled
     qa = RetrievalQA.from_chain_type(llm=llm, retriever=retriever)
 
     answer = qa.run(question)
